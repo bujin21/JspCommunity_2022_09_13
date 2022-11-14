@@ -69,11 +69,13 @@ public class DispatcherServlet extends HttpServlet {
 
 
 
-      if ( rq.getControllerName().equals("article") ) {
-        ArticleController controller = new ArticleController(req, resp, con);
-
-        if ( rq.getActionMethodName().equals("list")) {
-          controller.actionList();
+     switch (rq.getControllerTypeName()){
+       case "usr":
+         ArticleController articleController = new ArticleController(req, resp, con);
+         switch (rq.getControllerName()){
+           case "article":
+             articleController.performAction(rq);
+             break;
         }
       }
 
