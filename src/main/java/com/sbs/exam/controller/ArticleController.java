@@ -21,6 +21,7 @@ public class ArticleController extends Controller{
   public ArticleController(HttpServletRequest req, HttpServletResponse resp, java.sql.Connection con) {
     this.req = req;
     this.resp = resp;
+    this.con = con;
 
     articleService = new ArticleService(con);
   }
