@@ -99,11 +99,11 @@ public class Rq {
     }
   }
 
-  private void println(String str) {
+  public void println(String str) {
     print(str + "\n");
   }
 
-  private void printf(String format, Object... args) {
+  public void printf(String format, Object... args) {
     print(Util.f(format, args));
   }
 
@@ -122,8 +122,15 @@ public class Rq {
 
   public void historyBack(String msg) {
     println("<script>");
-    printf("alert(%);\n", msg);
+    printf("alert(%s);\n", msg);
     println("history.back();");
+    println("</script>");
+  }
+
+  public void replace(String msg, String redirectUri) {
+    println("<script>");
+    printf("alert('%s');\n", msg);
+    printf("location.replace('%s');\n", redirectUri);
     println("</script>");
   }
 }
