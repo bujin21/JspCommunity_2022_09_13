@@ -1,9 +1,10 @@
 package com.sbs.exam.dto;
 
 import com.sbs.exam.dao.ArticleDao;
+import lombok.Data;
 
 import java.util.Map;
-
+@Data
 public class Article {
   public int id;
   public String regDate;

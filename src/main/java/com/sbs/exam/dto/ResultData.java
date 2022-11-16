@@ -1,13 +1,17 @@
 package com.sbs.exam.dto;
 
 import com.sbs.exam.util.Util;
+import lombok.Getter;
 
 import java.util.Map;
 
 public class ResultData {
 
+  @Getter
   private String msg;
+  @Getter
   private String resultCode;
+  @Getter
   private Map<String, Object> body;
 
   private ResultData(){
@@ -24,17 +28,7 @@ public class ResultData {
     return rd;
   }
 
-  public String getMsg(){
-    return msg;
-  }
 
-  public String getResultCode(){
-    return getResultCode();
-  }
-
-  public Map<String, Object> getBody(){
-    return body;
-  }
   public boolean isSuccess(){
     return resultCode.startsWith("S-1");
   }
