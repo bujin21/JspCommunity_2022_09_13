@@ -1,10 +1,7 @@
-<%@ page import="java.util.List"%>
-<%@ page import="java.util.Map"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<%
-Map<String, Object> articleRow = (Map<String, Object>) request.getAttribute("articleRow");
-%>
+
 
 <!doctype html>
 <head>
@@ -17,10 +14,10 @@ Map<String, Object> articleRow = (Map<String, Object>) request.getAttribute("art
     <form action="doModify" method="post">
       <input autocomplete="off" type="hidden" name="id" value="${param.id}">
 
-      <div>번호 : <%= (int) articleRow.get("id")%></div>
-      <div>날짜 : <%= (String) articleRow.get("regDate")%></div>
-      <div>제목 : <input autocomplete="off" placeholder="제목을 입력하세요." name="title" type="text"></div>
-      <div>내용 : <textarea autocomplete="off" placeholder="내용을 입력해주세요." name="body"></textarea> </div>
+      <div>번호 : ${articleRow.id}%></div>
+      <div>날짜 : ${articleRow.regDate}%></div>
+      <div>제목 : <input autocomplete="off" placeholder="제목을 입력하세요." name="${article.title}" type="text"></div>
+      <div>내용 : <textarea autocomplete="off" placeholder="내용을 입력해주세요." name="${article.body}"></textarea> </div>
 
       <div>
         <button type="submit">수정</button>
