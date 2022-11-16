@@ -1,5 +1,6 @@
 package com.sbs.exam;
 
+import com.sbs.exam.dto.Article;
 import com.sbs.exam.util.Util;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -132,5 +133,9 @@ public class Rq {
     printf("alert('%s');\n", msg);
     printf("location.replace('%s');\n", redirectUri);
     println("</script>");
+  }
+
+  public void setAttr(String attrName, Object attrValue) {
+    req.setAttribute(attrName, attrValue);
   }
 }
