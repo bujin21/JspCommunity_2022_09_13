@@ -3,9 +3,8 @@
 
 
 
-<!doctype html>
-
-<body>
+<c:set var="pageTitle" value="게시물 리스트"></c:set>
+<%@ include file="../part/head.jspf"%>
 <h1>게시물 리스트</h1>
 
 <%@ include file="../part/topBar.jspf"%>
@@ -68,5 +67,4 @@
       <a href="list?page=${totalPage}">▶</a>
     </c:if>
 
-</body>
-</html>
+<%@ include file="../part/foot.jspf"%>

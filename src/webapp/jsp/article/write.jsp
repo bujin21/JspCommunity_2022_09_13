@@ -6,12 +6,8 @@
 Map<String, Object> articleRow = (Map<String, Object>) request.getAttribute("articleRow");
 %>
 
-<!doctype html>
-<head>
-  <meta charset="UTF-8">
-  <title>게시물 작성</title>
-</head>
-<body>
+<c:set var="pageTitle" value="게시물 작성"></c:set>
+<%@ include file="../part/head.jspf"%>
 <script>
     let ArticleWrite__submitDone = false;
 
@@ -38,7 +34,6 @@ Map<String, Object> articleRow = (Map<String, Object>) request.getAttribute("art
           return;
         }
 
-
         form.submit();
         ArticleWrite__submitDone == true;
     }
@@ -56,5 +51,4 @@ Map<String, Object> articleRow = (Map<String, Object>) request.getAttribute("art
         <a href="list">리스트</a>
       </div>
     </form>
-</body>
-</html>
+<%@ include file="../part/foot.jspf"%>
