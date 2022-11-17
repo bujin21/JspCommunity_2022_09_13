@@ -4,6 +4,7 @@ import com.sbs.exam.Rq;
 import com.sbs.exam.dto.Article;
 import com.sbs.exam.dto.ResultData;
 import com.sbs.exam.service.ArticleService;
+import com.sbs.exam.util.Util;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
@@ -39,10 +40,34 @@ public class ArticleController extends Controller{
       case "doWrite":
         actionDoWrite(rq);
         break;
+      case "doDelete":
+        actionDoDelete(rq);
+        break;
       default:
         rq.println("존재하지 않는 페이지입니다.");
         break;
     }
+  }
+
+  private void actionDoDelete(Rq rq) {
+    int id = rq.getIntParam("id", 0);
+    String redirectUri = rq.getParam("redirectUri", "../article/list");
+
+    if(id == 0){
+      rq.historyBack("id를 입력해주세요.");
+      return;
+    }
+
+    Article article = articleService.getForPrintArticleById(id);
+
+    if( article == null){
+      rq.historyBack(Util.f("%d번 게시물이 존재하지 않습니다.", id));
+      return;
+    }
+
+    ResultData deleteRd = articleService.delete(id);
+
+    rq.replace(deleteRd.getMsg(), redirectUri);
   }
 
   private void actionDetailList(Rq rq) {
